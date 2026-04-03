@@ -5,12 +5,13 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: devopsapp   # ✅ FIXED (matches deployment)
+    app: devopsapp
   ports:
     - name: http
-      port: 8080        # service port
-      targetPort: 8080  # container port
-      nodePort: 32222   # external access port
+      port: 8080
+      targetPort: 8080
+      # ❌ Removed nodePort to avoid conflict
+      # Kubernetes will auto-assign a free port
 
 ---
 apiVersion: apps/v1
@@ -31,6 +32,6 @@ spec:
     spec:
       containers:
       - name: devopsapp
-        image: image_name   # 🔁 replace with your real image
+        image: image_name   # 🔁 replace with your actual image
         ports:
         - containerPort: 8080
