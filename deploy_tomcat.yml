@@ -16,8 +16,8 @@
     ansible.builtin.get_url:
       url: "{{ build_number }}"
       dest: /home/ubuntu/sourcefile/webapp.war
-      username: ajay@virajfze.com
-      password: Hiqode@272311
+      username: "{{ jfrog_user }}"
+      password: "{{ jfrog_pass }}"
 
   - name: create directory for backup
     file: 
