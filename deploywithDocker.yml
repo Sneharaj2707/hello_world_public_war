@@ -1,7 +1,6 @@
 ---
 - hosts: webserver
   become: yes
-
   tasks:
     - name: Login to JFrog Registry
       shell: docker login -u "{{ jfrog_user }}" -p "{{ jfrog_pass }}" jfrog2026.jfrog.io
