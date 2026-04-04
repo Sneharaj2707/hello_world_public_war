@@ -4,9 +4,7 @@
 
   vars:
     build_number: "{{ build_number }}"
-    jfrog_user: "{{ jfrog_user }}"
-    jfrog_pass: "{{ jfrog_pass }}"
-
+  
   tasks:
     - name: login to jfrog securely
       shell: docker login -u "{{ jfrog_user }}" -p "{{ jfrog_pass }}" jfrog2026.jfrog.io
