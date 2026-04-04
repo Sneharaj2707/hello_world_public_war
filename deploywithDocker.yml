@@ -7,10 +7,10 @@
       shell: docker login -u "{{ jfrog_user }}" -p "{{ jfrog_pass }}" jfrog2026.jfrog.io
 
     - name: Pull Docker Image from JFrog
-      shell: docker pull jfrog2026.jfrog.io/dockerviassh/deployment_via_ssh:v.1.0.1-{{ build_number }}
+      shell: docker pull jfrog2026.jfrog.io/dockerviaansible/docker_via_ansible:v.1.0.1-{{ build_number }}
 
     - name: Remove Old Container (if exists)
       shell: docker rm -f DevopsAppDeploy || true
 
     - name: Run New Application Container
-      shell: docker run -id --name DevopsAppDeploy -p 8111:8080 jfrog2026.jfrog.io/dockerviassh/deployment_via_ssh:v.1.0.1-{{ build_number }}
+      shell: docker run -id --name DevopsAppDeploy -p 8111:8080 jfrog2026.jfrog.io/dockerviaansible/docker_via_ansible:v.1.0.1-{{ build_number }}
