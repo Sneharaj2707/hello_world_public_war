@@ -8,7 +8,7 @@
   
   tasks:
    - name: login to jfrog securely
-      shell: "docker login -u "{{ jfrog_user }}" -p "{{ jfrog_pass}}" jfrog2026.jfrog.io"
+      shell: "docker login -u "{{ jfrog_user }}" -p "{{ jfrog_pass }}" jfrog2026.jfrog.io"
     
     - name: pull an image
       shell: docker pull frog2026.jfrog.io/artifactory/api/docker/dockerviaansible/project_ansible:v1.0-{{ build_number }}
