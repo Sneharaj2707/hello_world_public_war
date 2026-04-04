@@ -1,22 +1,21 @@
 ---
 - hosts: websever
   become: yes
+
   vars:
-    build_number: '{{ BUILD_NUMBER }}'
+    build_number: "{{ build_number }}"
     jfrog_user: "{{ jfrog_user }}"
     jfrog_pass: "{{ jfrog_pass }}"
-  
+
   tasks:
-   - name: login to jfrog securely
+    - name: login to jfrog securely
       shell: docker login -u "{{ jfrog_user }}" -p "{{ jfrog_pass }}" jfrog2026.jfrog.io
-    
+
     - name: pull an image
-      shell: docker pull frog2026.jfrog.io/artifactory/api/docker/dockerviaansible/project_ansible:v1.0-{{ build_number }}
+      shell: docker pull jfrog2026.jfrog.io/artifactory/api/docker/dockerviaansible/project_ansible:v1.0-{{ build_number }}
 
     - name: remove container
-      shell: docker rm -f DevopsAppDeploy
-        
+      shell: docker rm -f DevopsAppDeploy || true
+
     - name: create a application container
-      shell: docker run -id --name DevopsAppDeploy -p 8111:8080 hfrog2026.jfrog.io/artifactory/api/docker/dockerviaansible/project_ansible:v1.0-{{ build_number }}
- 
-   
+      shell: docker run -id --name DevopsAppDeploy -p 8111:8080 jfrog2026.jfrog.io/artifactory/api/docker/dockerviaansible/project_ansible:v1.0-{{ build_number }}
